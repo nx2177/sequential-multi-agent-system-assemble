@@ -3,7 +3,7 @@ import json
 from typing import Dict, List, Tuple, Any, Optional
 from dataclasses import dataclass
 import itertools
-# from langchain.chat_models import ChatAnthropic
+from langchain.chat_models import ChatAnthropic
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.schema import HumanMessage
@@ -36,8 +36,7 @@ class RecruitmentAgent:
     def __init__(self, prompt: AgentPrompt, model_name: str = "claude-3-opus-20240229"):
         self.prompt = prompt
         if "claude" in model_name.lower():
-            # self.llm = ChatAnthropic(model=model_name)
-            pass
+            self.llm = ChatAnthropic(model=model_name)
         else:
             self.llm = ChatOpenAI(model=model_name)
     
